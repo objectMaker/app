@@ -1,31 +1,31 @@
 import Mock from 'mockjs';
-[
-  {
-    id: 193,
-    name: 'Dashboard',
-    path: '/',
-    pid: 0,
-    redirect: '/dashboard',
-    meta: {
-      title: '',
-      icon: 'dashboard',
-      level: 0,
-    },
-    children: [
-      {
-        id: 194,
-        name: 'Dashboard',
-        path: '/dashboard',
-        pid: 193,
-        hidden: false,
-        meta: {
-          title: '首页',
-          icon: 'dashboard',
-          level: 0,
-        },
-      },
-    ],
-  },
+let authArr = [
+  // {
+  //   id: 193,
+  //   name: 'Dashboard',
+  //   path: '/',
+  //   pid: 0,
+  //   redirect: '/dashboard',
+  //   meta: {
+  //     title: '',
+  //     icon: 'dashboard',
+  //     level: 0,
+  //   },
+  //   children: [
+  //     {
+  //       id: 194,
+  //       name: 'Dashboard',
+  //       path: '/dashboard',
+  //       pid: 193,
+  //       hidden: false,
+  //       meta: {
+  //         title: '首页',
+  //         icon: 'dashboard',
+  //         level: 0,
+  //       },
+  //     },
+  //   ],
+  // },
   {
     id: 195,
     name: 'LiveManage',
@@ -177,8 +177,8 @@ import Mock from 'mockjs';
 ];
 Mock.mock(/\/api\/user/, 'post', (option) => {
   if (JSON.parse(option.body).data.id === 2) {
-    return '你是管理员';
+    return authArr;
   } else {
-    return '你不是管理员';
+    return authArr.slice(0, -1);
   }
 });
